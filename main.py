@@ -11,11 +11,13 @@ class RungeKutta:
         self.iters = iters
         self.lx = []
         self.ly = []
+        self.lt = []
         self.avg = []
         self.h = h
 
     def runge(self, f1, f2, x, y):
         for it in range(self.iters):
+            self.lt.append(it*self.h)
             self.lx.append(x)
             self.ly.append(y)
             self.avg.append( f2(it+5, self.h))
@@ -26,7 +28,10 @@ class RungeKutta:
             x = x + ( k1 + 2*k2 + 2*k3 + k4) / 6.0
             y = y + ( m1 + 2*m2 + 2*m3 + m4) / 6.0
         fr = 200
+        plt.figure(1)
         plt.plot(self.lx[fr:], self.ly[fr:], 'g:', self.lx[fr:], self.avg[fr:], 'b-')
+        plt.figure(2)
+        plt.plot(self.lt[fr:], self.ly[fr:], 'g:', self.lt[fr:], self.avg[fr:], 'b-')
         plt.show()
 
 

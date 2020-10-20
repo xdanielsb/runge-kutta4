@@ -29,9 +29,14 @@ class RungeKutta:
             y = y + ( m1 + 2*m2 + 2*m3 + m4) / 6.0
         fr = 200
         plt.figure(1)
-        plt.plot(self.lx[fr:], self.ly[fr:], 'g:', self.lx[fr:], self.avg[fr:], 'b-')
+        plt.plot(self.lx[fr:], self.ly[fr:], color='g', label='RK4')
+        plt.plot(self.lx[fr:], self.avg[fr:], color='b', label='Avg')
+        plt.legend()
         plt.figure(2)
-        plt.plot(self.lt[fr:], self.ly[fr:], 'g:', self.lt[fr:], self.avg[fr:], 'b-')
+        plt.plot(self.lt[fr:], self.ly[fr:], color='g', label='RK4')
+        plt.plot(self.lt[fr:], self.avg[fr:], color='b',  label='Avg')
+        leg = plt.legend(loc='best', ncol=2, mode="expand", shadow=True, fancybox=True)
+        leg.get_frame().set_alpha(0.5)
         plt.show()
 
 

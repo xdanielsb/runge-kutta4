@@ -31,12 +31,13 @@ class RungeKutta:
         plt.figure(1)
         plt.plot(self.lx[fr:], self.ly[fr:], color='g', label='RK4')
         plt.plot(self.lx[fr:], self.avg[fr:], color='b', label='Avg')
+        plt.gca().set_aspect('equal', adjustable='box')
         plt.legend()
-        plt.figure(2)
-        plt.plot(self.lt[fr:], self.ly[fr:], color='g', label='RK4')
-        plt.plot(self.lt[fr:], self.avg[fr:], color='b',  label='Avg')
-        leg = plt.legend(loc='best', ncol=2, mode="expand", shadow=True, fancybox=True)
-        leg.get_frame().set_alpha(0.5)
+        # plt.figure(2)
+        # plt.plot(self.lt[fr:], self.ly[fr:], color='g', label='RK4')
+        # plt.plot(self.lt[fr:], self.avg[fr:], color='b',  label='Avg')
+        # leg = plt.legend(loc='best', ncol=2, mode="expand", shadow=True, fancybox=True)
+        # leg.get_frame().set_alpha(0.5)
         plt.show()
 
 
@@ -60,5 +61,5 @@ def vanderpol(x, y, h):
 
 if __name__ == "__main__":
     obj = RungeKutta()
-    obj.runge(vanderpol, exact_solution, x=1, y=2)
+    obj.runge(vanderpol, exact_solution, x=2, y=2)
     
